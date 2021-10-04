@@ -1,5 +1,8 @@
 package de.tekup.first.project.services;
 
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import de.tekup.first.project.entities.Employee;
@@ -17,7 +20,13 @@ public class EmployeeService {
 	}
 	
 	public Employee getEmpById(int id) {
-		return empRepos.getById(id);
+		Optional<Employee> opt = empRepos.findById(id);
+		//if(opt.isPresent())
+		//	return opt.get();
+		//throw new NoSuchElementException("Employee with this id is not found");
+		
+		return opt.orElseThrow(() -> new NoSuchElementException("Employee with this id is not found"));
+		
 	}
 
 }

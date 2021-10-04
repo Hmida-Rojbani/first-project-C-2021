@@ -1,5 +1,6 @@
 package de.tekup.first.project.entities;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -14,7 +15,7 @@ import lombok.Data;
 @Entity
 @Table(name = "employee_table")
 @Data
-public class Employee {
+public class Employee implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
